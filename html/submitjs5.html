@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit</title>
+</head>
+<body>
+    <form id="submitForm">
+        <label>Enter fødselsnummer:</label>
+        <input type="text" id="taxId" pattern="^[0-3][0-9][01][0-9]{3}[0-9]{5}$" required autofocus>
+        <input type="submit" id="btnSubmit" value="Submit">
+    </form>
+    <p id="result"></p>
+</body>
+<style type="text/css">
+    /* When the pattern is matched */
+    input[type=text]:valid {
+        color: green;
+        font-weight: bold;
+    }
+
+    /* Unmatched */
+    input[type=text]:invalid {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+<script>
+    var input = document.getElementById("taxId");
+    input.addEventListener('invalid', function(e) {
+        if(!input.validity.valid) {
+            e.target.setCustomValidity("Please enter a valid fødselsnummer.")
+        }
+    }, false);
+
+    input.addEventListener('input', function(e) {
+        e.target.setCustomValidity('')
+    });
+</script>
+</html>

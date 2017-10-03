@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit</title>
+</head>
+<body>
+    <form id="submitForm">
+        <label>Enter fødselsnummer:</label>
+        <input type="text" name="taxId">
+        <input type="button" id="btnSubmit" value="Submit">
+    </form>
+    <p id="result"></p>
+</body>
+<script>
+    var form = document.getElementById("submitForm")
+    var btn = document.getElementById("btnSubmit")
+    btn.addEventListener("click", function() {
+        checkContent(form.taxId.value)
+    });
+
+    function checkContent(taxId) {
+        var rgx = /^[0-3][0-9][01][0-9]{3}[0-9]{5}$/
+
+        var res = taxId.match(rgx);
+
+        if (res != null) {
+            document.getElementById("result").innerHTML = "<b>Valid fødselsnummer</b>"
+        } else {
+            document.getElementById("result").innerHTML = "<b>Invalid fødselsnummer</b>"
+        }
+    }
+
+</script>
+</html>
